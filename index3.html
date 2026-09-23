@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WikiHome</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<button id="menuToggle" class="menu-toggle">☰</button>
+<div id="sidebarOverlay"></div>
+
+<div id="sidebar">
+  <h1>📚 WikiHome</h1>
+  <button id="homeBtn" class="btn" style="width:100%;">🏠 Главная</button>
+  <input id="search" type="text" placeholder="🔍 Поиск...">
+  <div id="searchInfo"></div>
+  <div class="filterRow">
+    <span class="filterChip" id="favFilter">⭐ Избранное</span>
+    <span class="filterChip" id="pinnedFilter">📌 Закреплённые</span>
+  </div>
+  <button id="newBtn">+ Новая заметка</button>
+  <div id="foldersBox"></div>
+  <div id="tagsBox"></div>
+  <div id="notesList"></div>
+  <div id="bottomBar">
+    <button class="btn" id="themeBtn">🌙</button>
+    <button class="btn" id="exportBtn">⬇ Экспорт</button>
+    <button class="btn" id="importBtn">⬆ Импорт</button>
+    <input type="file" id="importFile" accept=".json" class="hidden">
+  </div>
+</div>
+
+<div id="main">
+  <div id="home">
+    <div id="homeHeader">
+      <h2 id="homeTitle">Все заметки</h2>
+      <div id="viewToggle">
+        <button id="gridBtn" class="active">⊞ Плитка</button>
+        <button id="listBtn">📋 Список</button>
+      </div>
+    </div>
+    <div id="grid"></div>
+    <div id="listView" class="hidden"></div>
+    <div id="noNotes" class="hidden">
+      Пока нет заметок. Нажми <b>+ Новая заметка</b> слева.
+    </div>
+  </div>
+
+  <div id="editorView" class="hidden">
+    <div id="topBar">
+      <input id="title" type="text" placeholder="Название заметки">
+      <span id="saveStatus">Сохранено ✓</span>
+      <button class="btn icon" id="pinBtn" title="Закрепить">📌</button>
+      <button class="btn icon" id="favBtn" title="В избранное">☆</button>
+      <button class="btn icon" id="dupBtn" title="Дублировать">📋</button>
+      <button class="btn icon" id="histBtn" title="История">🕘</button>
+      <button class="btn active" id="editBtn">✏️ Редактор</button>
+      <button class="btn" id="viewBtn">👁 Просмотр</button>
+      <button class="btn danger" id="deleteBtn">🗑</button>
+      <button class="btn" id="backBtn">←</button>
+    </div>
+
+    <div id="metaBar">
+      <span id="createdAt"></span>
+      <span id="updatedAt"></span>
+    </div>
+
+    <div id="coverBar">
+      <div id="coverPreview"></div>
+      <button class="btn" id="uploadCoverBtn">🖼 Фото</button>
+      <button class="btn" id="urlCoverBtn">🔗 URL</button>
+      <button class="btn" id="removeCoverBtn">✖</button>
+      <input type="file" id="coverFile" accept="image/*" class="hidden">
+      <span style="margin-left:8px;">Папка:</span>
+      <select id="folderSelect">
+        <option value="">— без папки —</option>
+      </select>
+      <div class="colorPicker" id="colorPicker"></div>
+      <span id="searchNav">
+        <span id="searchCount"></span>
+        <button class="btn" id="prevMatch">←</button>
+        <button class="btn" id="nextMatch">→</button>
+      </span>
+    </div>
+
+    <textarea id="content" placeholder="Пиши здесь... # заголовок, **жирный**, - список, `код`, #тег, [[ссылка]]"></textarea>
+    <div id="preview" class="hidden"></div>
+    <div id="statsBar"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
